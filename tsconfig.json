@@ -1,9 +1,7 @@
 {
-    "files": [
-        "src/*.ts"
-    ],
-    "compilesOptions": {
-       "noImplicitAny": true,
-       "target": "es5"
-    }
+  "include": ["src/**/*"],
+  "compilesOptions": {
+    "noImplicitAny": true,
+    "target": "es5"
+  }
 }
