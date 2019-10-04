@@ -1,20 +1,17 @@
-const users: any[] = [
-  {
-    id: 2,
-    name: "Lucas",
-    email: "lucas@email.com"
-  }
-];
+import { User } from "./../models/User";
+import {UserModel} from './../models/User.d'
 
 export const resolvers = {
   Query: {
-    allUsers: () => users
+    allUsers: async (): UserModel[] => User.find()
   },
   Mutation: {
-    createUser: (root, args) => {
-      const newUser = Object.assign({ id: users.length + 1 }, args);
+    createUser: async (root, { name, email }): UserModel[] => {
+      const newUser = new User({ name, email });
 
-      users.push(newUser);
+      await newUser.save();
+
+      console.log(newUser);
 
       return newUser;
     }
