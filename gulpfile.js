@@ -1,16 +1,19 @@
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
-const { series, dest, watch } = require("gulp");
+const { series, dest, watch, src } = require("gulp");
+var clean = require("gulp-clean");
 
 function copy() {
   return tsProject
     .src()
     .pipe(tsProject())
-    .js.pipe(dest("dist")); 
+    .js.pipe(dest("dist"));
 }
 
-
-exports.default = () =>{
-    watch(["src/**/*.ts", "src/**/*.json"], copy)
-
+function clear() {
+  return src("dist").pipe(clean());
 }
+
+exports.default = () => {
+  watch(["src/**/*.ts", "src/**/*.json"], series(clear, copy));
+};

@@ -2,22 +2,15 @@ import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql'
 import schema from './graphql/schema'
 
-class App {
+const startServer = () => {
+  const app = express();
 
-  public express: express.Application
+  app.use('/graphql', graphqlHTTP({
+    schema: schema,
+    graphiql: true
+  }));
 
-  constructor(){
-    this.express = express();
-    this.middleware();
-  }
-
-  private middleware(): void {
-    this.express.use('/graphql', graphqlHTTP({
-      schema: schema,
-      graphiql: process.env.NODE_ENV === 'development'
-
-    }))
-  }
+  app.listen({port: 3000}, () => { console.log("Server started ...")})
 }
 
-export default new App().express; 
+startServer();
