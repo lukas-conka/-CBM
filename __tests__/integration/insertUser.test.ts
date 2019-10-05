@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const mongo = "mongodb://localhost:27017/cbm_teste";
 mongoose.connect(mongo);
-const { User } = require("../../dist/models/User");
+const { User } = require("../../dist/models/UserModel");
 
 describe("User model test", () => {
   beforeAll(async () => {
@@ -10,7 +10,19 @@ describe("User model test", () => {
   it("should insert a new user", async () => {
     const user = new User({
       name: "Usuario Teste",
-      email: "teste@email.com"
+      email: "teste@email.com",
+      birthday: "05-11-1990",
+      address: "Estrada Teste",
+      addressNumber: "123",
+      complement: "Ap 210",
+      phone: "11 3332-2222",
+      whatsApp: "11 98084-4433",
+      dependents: [
+        {
+          name: "Luiza",
+          birthday: "04/03/2003"
+        }
+      ]
     });
 
     const savedUser = await user.save();
