@@ -6,6 +6,7 @@ const dependentsSchema = new mongoose_1.Schema({ name: String, birthday: String 
 const userSchema = new mongoose_1.Schema({
     name: String,
     email: String,
+    password: String,
     birthday: String,
     address: String,
     addressNumber: String,

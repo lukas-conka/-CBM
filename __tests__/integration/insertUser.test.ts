@@ -11,6 +11,7 @@ describe("User model test", () => {
     const user = new User({
       name: "Usuario Teste",
       email: "teste@email.com",
+      password: "123456",
       birthday: "05-11-1990",
       address: "Estrada Teste",
       addressNumber: "123",
@@ -21,6 +22,10 @@ describe("User model test", () => {
         {
           name: "Luiza",
           birthday: "04/03/2003"
+        },
+        {
+          name: "Ramon",
+          birthday: "01/03/2000"
         }
       ]
     });

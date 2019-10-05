@@ -4,6 +4,7 @@ const dependentsSchema = new Schema({name: String, birthday: String})
 const userSchema = new Schema({
     name: String, 
     email: String,
+    password: String,
     birthday: String,
     address: String,
     addressNumber: String,

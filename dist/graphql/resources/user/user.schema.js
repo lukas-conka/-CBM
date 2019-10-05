@@ -1,15 +1,42 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const userTypes = `
-    type User {
+    type Dependents {
         id: ID!
         name: String!
-        email: String!
+        birthday: String!
+    }
+    type User {
+        id: ID!
+        name: String
+        email: String
+        password: String
+        address: String
+        addressNumber: String
+        complement: String
+        phone: String
+        whatsApp: String
+        dependents: [Dependents]
+    }
+
+
+    input DependentsInput {
+        name: String!
+        birthday: String!    
+
     }
 
     input UserCreateInput {
-        name: String! 
+        name: String!
         email: String!
+        password: String!
+        address: String!
+        addressNumber: String!
+        complement: String
+        phone: String
+        whatsApp: String
+        dependents: [DependentsInput]
+
     }
 
      input UserUpdateInput {
@@ -20,7 +47,7 @@ const userTypes = `
 `;
 exports.userTypes = userTypes;
 const userQueries = `
-    users(first: Int, offset: Int): [User!]!
+    users(first: Int, offset: Int): [User]
     user(id: ID!): User
 `;
 exports.userQueries = userQueries;
