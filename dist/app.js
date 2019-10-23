@@ -1,16 +1,15 @@
 "use strict";
-exports.__esModule = true;
-var express = require("express");
-var App = /** @class */ (function () {
-    function App() {
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+class App {
+    constructor() {
         this.express = express();
         this.middleware();
     }
-    App.prototype.middleware = function () {
-        this.express.use('/', function (req, res, next) {
+    middleware() {
+        this.express.use('/', (req, res, next) => {
             res.send("Ola mundo");
         });
-    };
-    return App;
-}());
-exports["default"] = new App().express;
+    }
+}
+exports.default = new App().express;
